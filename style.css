@@ -19,7 +19,7 @@ body {
 }
 
 .search-bar {
-  width: 50%;
+  width: 70%;
   margin: 0 auto;
   padding-top: 20px;
   display: flex;
@@ -30,7 +30,7 @@ body {
 }
 .search-icon {
   position: absolute;
-  left: 0;
+  left: 10px;
   cursor: pointer;
 }
 .search-city {
@@ -40,7 +40,7 @@ body {
   background-color: transparent;
   height: 40px;
   color: white;
-  margin-left: 10px;
+
   font-weight: bold;
 }
 .search-city::placeholder {
@@ -89,4 +89,10 @@ body {
 .item {
   width: 50%;
   margin-top: 10px;
+}
+.display-additional {
+  display: none;
+}
+.city-name-error {
+  padding-top: 20px;
 }
