@@ -22,18 +22,18 @@ $(document).ready(function () {
         appid: API_KEY,
       },
       success: function (json) {
-        cityName.html(`${json.name} `);
-        weatherState.html(`${json.weather[0].description}`);
+        cityName.text(`${json.name} `);
+        weatherState.text(`${json.weather[0].description}`);
         weatherIcon.attr(
           "src",
           `https://openweathermap.org/img/wn/${json.weather[0].icon}@2x.png`
         );
-        temperature.html(`${parseInt(json.main.temp)}`);
-        humidity.html(`${json.main.humidity} %`);
+        temperature.text(`${parseInt(json.main.temp)}`);
+        humidity.text(`${json.main.humidity} %`);
         const windSpeedCmPerS = Math.round(json.wind.speed * 100);
         const windSpeedKmh = Math.round(windSpeedCmPerS * 0.036);
-        windSpeed.html(`${parseInt(windSpeedKmh)} km/h`);
-
+        windSpeed.text(`${parseInt(windSpeedKmh)} km/h`);
+        $(".infor-wraper ").removeClass("city-name-error");
         switch (json.weather[0].main) {
           case "Clear":
             $(".container").css(
@@ -66,12 +66,13 @@ $(document).ready(function () {
       },
       error: function () {
         $(".container").css(`background-image`, `url(./image/404-not.jpg)`);
-        cityName.html("Thanh pho kh ton tai");
-        weatherState.html("Not found");
-        temperature.html("");
+        cityName.text("Kh ton tai");
+        weatherState.text("Not found");
+        temperature.text("");
         weatherIcon.attr("src", `./image/404.png`);
-        humidity.html("--");
-        windSpeed.html("--");
+        humidity.text("--");
+        windSpeed.text("--");
+        $(".infor-wraper ").addClass("city-name-error");
       },
     });
   });
