@@ -31,6 +31,7 @@ body {
 .search-icon {
   position: absolute;
   left: 0;
+  cursor: pointer;
 }
 .search-city {
   border: 0;
@@ -46,6 +47,14 @@ body {
   color: rgba(255, 255, 255, 0.863);
   font-size: 16px;
   font-weight: 200;
+}
+.search-city:focus {
+  background-color: rgb(34, 138, 223);
+  border-radius: 10px;
+}
+.weather-icon {
+  width: 100px;
+  height: 100px;
 }
 .infor-wraper {
   display: flex;

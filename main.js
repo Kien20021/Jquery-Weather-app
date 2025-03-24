@@ -1,6 +1,15 @@
 const API_KEY = `02ac31aab528819053457737dd81930f`;
+const cityName = $(".city-name");
+const weatherState = $(".weather-state");
+const temperature = $(".temperature");
+const weatherIcon = $(".weather-icon");
+
+const additionalSection = $(".additional-section");
+const humidity = $(".humidity");
+const windSpeed = $(".wind-speed");
+
 $(document).ready(function () {
-  $(".search-icon").on("click", function () {
+  $(".search-city").on("change", function () {
     const city = $(".search-city").val();
     if (city == "") return;
     $.ajax({
@@ -13,14 +22,6 @@ $(document).ready(function () {
         appid: API_KEY,
       },
       success: function (json) {
-        const cityName = $(".city-name");
-        const weatherState = $(".weather-state");
-        const temperature = $(".temperature");
-        const weatherIcon = $(".weather-icon");
-
-        const humidity = $(".humidity");
-        const windSpeed = $(".wind-speed");
-
         cityName.html(`${json.name} `);
         weatherState.html(`${json.weather[0].description}`);
         weatherIcon.attr(
@@ -64,9 +65,13 @@ $(document).ready(function () {
         }
       },
       error: function () {
-        cityName.html(" Khong tim thay thanh pho");
-        weatherState.html("");
-        temperature.html("--");
+        $(".container").css(`background-image`, `url(./image/404-not.jpg)`);
+        cityName.html("Thanh pho kh ton tai");
+        weatherState.html("Not found");
+        temperature.html("");
+        weatherIcon.attr("src", `./image/404.png`);
+        humidity.html("--");
+        windSpeed.html("--");
       },
     });
   });
